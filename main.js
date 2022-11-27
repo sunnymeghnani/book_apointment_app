@@ -31,7 +31,13 @@ function onSubmit(e)
     }
     else
     {
-        localStorage.setItem(nameInput,emailInput);
+        let myObj = {
+             names:nameInput,
+             emails:emailInput
+        };
+        let myObj_searialized = JSON.stringify(myObj);
+        console.log(myObj_searialized);
+        localStorage.setItem('obj',myObj_searialized)
         
         
     }
