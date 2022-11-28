@@ -31,14 +31,61 @@ function onSubmit(e)
     }
     else
     {
-        let myObj = {
-             names:nameInput,
-             emails:emailInput
-        };
-        let myObj_searialized = JSON.stringify(myObj);
-        console.log(myObj_searialized);
-        localStorage.setItem('obj',myObj_searialized)
-        
+        // let localStoragename = localStorage.getItem('names');
+        // let localStoragemail = localStorage.getItem('emails');
+
+        // if(localStoragename === null || localStoragemail === null)
+        // {
+        //     localStorage.setItem('names' , '[]');
+        //     localStorage.setItem('emails' , '[]');
+        // }
+        // let names = JSON.parse(localStorage.getItem('names'));
+        // let emails = JSON.parse(localStorage.getItem('emails'));;
+        // names.push(nameInput);
+        // emails.push(emailInput);
+
+        // localStorage.setItem('names',JSON.stringify(names));
+        // localStorage.setItem('emails',JSON.stringify(emails));
+        // let localStorage = localStorage.getItem('myObj');
+        //  if(myObj === null)
+        //  {
+        //     localStorage.setItem('myObj','[]');
+        //  }
+        // let myObj = JSON.parse(localStorage.getItem('myObj'));
+        // myObj.push({
+        //      names:nameInput,
+        //      emails:emailInput
+        // });
+        const myObj={
+            nameInput,
+            emailInput
+        }
+    
+        localStorage.setItem(myObj.emailInput,JSON.stringify(myObj))
+       display(myObj);
         
     }
+    
 }
+function display(user)
+{
+   
+    
+        let output = document.querySelector('ul');
+
+
+                inputed =`
+                <li>${user.nameInput} ${user.emailInput}</li>`
+                
+                output.innerHTML = output.innerHTML + inputed;
+            
+       
+            
+               
+
+                
+            } 
+    
+
+
+// 
