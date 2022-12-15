@@ -46,46 +46,88 @@ function onSubmit(e)
 
         // localStorage.setItem('names',JSON.stringify(names));
         // localStorage.setItem('emails',JSON.stringify(emails));
-        // let localStorage = localStorage.getItem('myObj');
+        // let localStorageContent = localStorage.getItem(myObj.emailInput);
         //  if(myObj === null)
         //  {
-        //     localStorage.setItem('myObj','[]');
+        //     localStorage.setItem(myObj.emailInput,'[]');
         //  }
         // let myObj = JSON.parse(localStorage.getItem('myObj'));
-        // myObj.push({
-        //      names:nameInput,
-        //      emails:emailInput
-        // });
+
+
         const myObj={
             nameInput,
             emailInput
         }
     
         localStorage.setItem(myObj.emailInput,JSON.stringify(myObj))
-       display(myObj);
+        console.log(myObj);
+        display(myObj);
+               // if(myObj.some((v)=>{return v.emailInput==emailInput}))
+        // {
+            
+        //     deletion(myObj.emailInput)
+        // }
+        // else
+        // {
+        //     myObj.push({
+        //         nameInput:nameInput,
+        //         emailInput:emailInput
+        //    });
+
+        //    localStorage.setItem(myObj.emailInput,JSON.stringify(myObj))
+        //     display(myObj);
+        // }
+       
         
     }
     
 }
 function display(user)
 {
+    // console.log(localStorage.getItem(user.emailInput));
    
-    
-        let output = document.querySelector('ul');
+
+    // if(localStorage.getItem(user.emailInput) !== null)
+    // {
+    //     deletion(user.emailInput);
+    // }
+
+        let output = document.getElementById('users');
 
 
                 inputed =`
-                <li>${user.nameInput} ${user.emailInput}</li>`
+                <li>${user.nameInput} ${user.emailInput}
+                <button type="button" onClick=deleteUser('${user.emailInput}')>delete</button> 
+                </li>`
                 
                 output.innerHTML = output.innerHTML + inputed;
             
        
-            
-               
+           
 
                 
-            } 
+ } 
+ function deleteUser(del)
+{
+    localStorage.removeItem(del);
+    deletion(del)
+}            
     
+ function deletion(emailed)
+ {
+    
+    let parentNode=document.getElementById('users');
+    let childNodeToBeDeleted=document.getElementById(emailed);
+    console.log(document.getElementById(emailed));
+
+    if(childNodeToBeDeleted )
+    {
+        parentNode.removeChild(childNodeToBeDeleted);
+    }
+}
+            
+ 
+  
 
 
 // 
