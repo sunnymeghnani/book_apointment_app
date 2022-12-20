@@ -98,6 +98,7 @@ function display(user)
                 inputed =`
                 <li>${user.nameInput} ${user.emailInput}
                 <button type="button" onClick=deleteUser('${user.emailInput}')>delete</button> 
+                <button type="button" onClick=editUser('${user.emailInput}','${user.nameInput}')>edit</button> 
                 </li>`
                 
                 output.innerHTML = output.innerHTML + inputed;
@@ -107,11 +108,18 @@ function display(user)
 
                 
  } 
+ function editUser(emails,names)
+{
+    document.getElementById('name').value=names;
+    document.getElementById('email').value=emails;
+    deleteUser(emails);
+} 
  function deleteUser(del)
 {
     localStorage.removeItem(del);
     deletion(del)
-}            
+}     
+      
     
  function deletion(emailed)
  {
